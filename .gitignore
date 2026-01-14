@@ -12,3 +12,4 @@ script/.idea
 *.exe
 exe_output
 test.txt
+imgui/src/font_msyh.c 

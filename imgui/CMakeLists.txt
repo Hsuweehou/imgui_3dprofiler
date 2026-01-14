@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.22)
 
-project(imgui)
+project(gui)
 
 set(CMAKE_CXX_STANDARD 17)
 
@@ -52,10 +52,10 @@ file(GLOB_RECURSE IMGUI_SRCS
     ${THIRD_PARTY_LIBRARY_DIR}/imgui_gl_1.92/*.cpp)
 
 file(GLOB APP_SRCS 
-    ${CMAKE_SOURCE_DIR}/imgui/src/*.cpp)
+    ${CMAKE_SOURCE_DIR}/gui/src/*.cpp)
 
 file(GLOB MAIN_SRCS 
-    ${CMAKE_SOURCE_DIR}/imgui/src)
+    ${CMAKE_SOURCE_DIR}/gui/src)
 
 file(GLOB SCANNER_SRCS 
     ${CMAKE_SOURCE_DIR}/scanner_l/src)
@@ -91,13 +91,8 @@ target_include_directories(${PROJECT_NAME} PUBLIC
     $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include/>
     $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
     ${CMAKE_SOURCE_DIR}/scanner_l/include/scanner_l
-    ${CMAKE_SOURCE_DIR}/imgui/include
+    ${CMAKE_SOURCE_DIR}/gui/include
 )
-
-# 设置 MSVC 编译器选项以支持 UTF-8 编码
-if(MSVC)
-    target_compile_options(${PROJECT_NAME} PRIVATE /utf-8)
-endif()
     
 target_link_libraries(${PROJECT_NAME}
         glfw3

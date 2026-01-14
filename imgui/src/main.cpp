@@ -1,44 +1,52 @@
-#include "CameraScannerUI.h"
-#include "glog/logging.h"
+﻿#include "MainWindow.h"
+
 #include <iostream>
+#include <vector>
 
-#ifdef _WIN32
-#include <windows.h>
-#endif
+static void glfw_error_callback(int error, const char* description)
+{
+    fprintf(stderr, "GLFW Error %d: %s\n", error, description);
+}
 
-int main(int argc, char* argv[]) {
-#ifdef _WIN32
-    // 设置控制台代码页为 UTF-8，以正确显示中文
-    SetConsoleCP(CP_UTF8);
-    SetConsoleOutputCP(CP_UTF8);
-#endif
+static void GetScreenSize(int& width, int& height)
+{
+    //屏幕数量
+    int monitorCount;
+    GLFWmonitor** pMonitor = glfwGetMonitors(&monitorCount);
+    int screen_x, screen_y;
+    for (int i = 0; i < monitorCount; i++)
+    {
+        const GLFWvidmode* mode = glfwGetVideoMode(pMonitor[i]);
+        //屏幕大小
+        screen_x = mode->width;
+        screen_y = mode->height;
+    }
+    width = screen_x;
+    height = screen_y;
+}
 
-    // 初始化 glog
-    google::InitGoogleLogging(argv[0]);
-    FLAGS_logtostderr = 1; // 同时输出到控制台
-
-    try {
-        // 创建 UI 实例
-        CameraScannerUI ui;
-
-        // 初始化
-        if (!ui.Initialize(1280, 720, "相机扫描系统")) {
-            std::cerr << "Failed to initialize UI" << std::endl;
-            return -1;
+//防止程序多开
+HANDLE g_hEvent; //定义一个句柄
+int main()
+{
+    g_hEvent = CreateEventW(NULL, 0, 0, LPCWSTR("Hi"));
+    SetEvent(g_hEvent);
+    if (g_hEvent)
+    {
+        if (ERROR_ALREADY_EXISTS == GetLastError()) {
+            //如果多开会退出
+            return 0;
         }
-
-        // 运行主循环
-        ui.Run();
-
-        // 清理
-        ui.Cleanup();
-
-    } catch (const std::exception& e) {
-        std::cerr << "Exception: " << e.what() << std::endl;
-        LOG(ERROR) << "Exception: " << e.what();
-        return -1;
     }
 
-    google::ShutdownGoogleLogging();
+    glfwSetErrorCallback(glfw_error_callback);
+    if (!glfwInit())
+        return -1;
+
+    //获取屏幕尺寸
+    int width, height;
+    GetScreenSize(width, height);
+    glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);
+    std::unique_ptr<MainWindow> win = std::make_unique<MainWindow>(height, width);
     return 0;
 }
