@@ -1,0 +1,8 @@
+{
+    "set_config_root_path": "D:\\codes\\project_brassiere_cup\\brassiere_cup_scanner\\build\\Bin\\",
+    "shared_memory_name_pc":"pointclouds_loop_scan_0_pc",
+	"shared_memory_name_gray":"pointclouds_loop_scan_0_gray",
+	"plc_setting_path":"D:\\codes\\project_brassiere_cup\\brassiere_cup_scanner\\build\\Bin\\ScannerConfig\\config_tmp.json",
+    "scanner_param_file_path": "D:\\codes\\project_brassiere_cup\\brassiere_cup_scanner\\build\\Bin\\ScannerConfig\\scanner_0.txt",
+	"data_savin_path":"D:\\codes\\project_brassiere_cup\\brassiere_cup_scanner\\build\\Bin\\ScannerConfig\\data\\"
+}

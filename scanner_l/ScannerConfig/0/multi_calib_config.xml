@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<opencv_storage>
+<multi_calib_rt type_id="opencv-matrix">
+  <rows>4</rows>
+  <cols>4</cols>
+  <dt>d</dt>
+  <data>
+    1. 0. 0. 0. 0. 1. 0. 0. 0. 0. 1. 0. 0. 0. 0. 1.</data></multi_calib_rt>
+</opencv_storage>

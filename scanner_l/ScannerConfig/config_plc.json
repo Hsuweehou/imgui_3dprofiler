@@ -1,0 +1,50 @@
+{
+    "current_solution_id": 0,
+    "plc_server_ip": "192.168.6.6",
+    "plc_server_port": 502,
+	"moving_speed":50,
+    "solutions": [
+        {
+            "id": 0,
+            "name": "120mm_60mm",
+            "x_coord_info": {
+                "loading_pt": 200.0,
+                "line_scan_end_pt": 537.0
+
+            },
+            "y_coord_info": {
+                "highest_pt": 620.0,
+                "lowest_pt": 520.0,
+                "scanner_design_pt": 600.0
+            }
+        },
+        {
+            "id": 1,
+            "name": "60mm_60mm",
+            "x_coord_info": {
+                "loading_pt": 221.0,
+                "line_scan_end_pt": 537.0
+
+            },
+            "y_coord_info": {
+                "highest_pt": 620.0,
+                "lowest_pt": 520.0,
+                "scanner_design_pt": 520.0
+            }
+        },
+		{
+            "id": 2,
+            "name": "700mm_60mm",
+            "x_coord_info": {
+                "loading_pt": 221.0,
+                "line_scan_end_pt": 537.0
+
+            },
+            "y_coord_info": {
+                "highest_pt": 620.0,
+                "lowest_pt": 520.0,
+                "scanner_design_pt": 520.0
+            }
+        }
+    ]
+}

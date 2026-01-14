@@ -1,0 +1,14 @@
+.vscode
+build*/*
+algorithms/*
+data/*
+SDK_C++/*
+test/*
+move_direction_calibr/script/dataset
+move_direction_calibr/script/.idea
+script/data
+script/exe_output
+script/.idea
+*.exe
+exe_output
+test.txt

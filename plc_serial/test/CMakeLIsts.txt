@@ -1,0 +1,44 @@
+# FILENAME:      CMakeLists.txt
+#
+# AUTHORS:       Jia Liang    START DATE: Wednesday July 10th 2024
+#
+# LAST MODIFIED: Tuesday, August 6th 2024, 10:09:57 am
+#
+# Copyright (c) 2023 - 2024 DepthVision Limited
+#
+# CONTACT:       liangjia@depthvision3d.com
+
+project(test_all)
+
+if(NOT DEFINED THIRD_PARTY_LIBRARY_DIR)
+    # Check if the environment variable is set
+    if(DEFINED ENV{THIRD_PARTY_LIBRARY_DIR})
+        set(THIRD_PARTY_LIBRARY_DIR $ENV{THIRD_PARTY_LIBRARY_DIR})
+    else()
+        set(THIRD_PARTY_LIBRARY_DIR ${CMAKE_SOURCE_DIR}/../../3rdParty CACHE STRING "The path to 3rd party libraries")
+    endif()
+endif()
+
+set(GTest_DIR ${THIRD_PARTY_LIBRARY_DIR}/gtest/lib/cmake/GTest)
+message("GTest dir:"${GTest_DIR})
+find_package(GTest REQUIRED)
+
+if(GTest_FOUND)
+    message("GTest ${GTest_VERSION} found")
+else()
+    message(FATAL_ERROR "Cannot find GTest")
+endif()
+
+add_executable(${PROJECT_NAME}
+    main.cpp test_link.cpp)
+
+target_include_directories(${PROJECT_NAME} PUBLIC
+    ${CMAKE_CURRENT_SOURCE_DIR}/../serial/include/serial
+    ${CMAKE_CURRENT_SOURCE_DIR}/../include
+)
+
+target_link_libraries(${PROJECT_NAME} PUBLIC
+    MitsubishiPLCLink
+    serial::serial
+    GTest::gtest
+)

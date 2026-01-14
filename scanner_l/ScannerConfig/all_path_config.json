@@ -1,0 +1,9 @@
+{
+    "set_config_root_path": "D:\\codes\\GUI_projects\\imguiProfileScanner\\build\\",
+    "shared_memory_name_pc": "Local\\pointclouds_loop_scan_0_pc",
+    "shared_memory_name_gray": "Local\\pointclouds_loop_scan_0_gray",
+    "scanner_param_file_path": "D:\\codes\\GUI_projects\\imguiProfileScanner\\build\\ScannerConfig\\scanner_0.txt",
+    "data_root_path": "D:\\codes\\GUI_projects\\imguiProfileScanner\\build\\ScannerConfig\\data\\",
+    "config_plc_filename": "config_plc.json",
+    "ply_saving_switch": true
+}
